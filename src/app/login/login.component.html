@@ -1,0 +1,15 @@
+<div class="container">
+    <span>Login</span>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="username">
+            <label>Email or Username : </label>
+            <input type="email" formControlName="username" placeholder="Username or Email" required>
+        </div>
+        <div class="password">
+            <label>Password :  </label>
+            <input type="{{hidePassword ? 'password' : 'text'}}" formControlName="password" placeholder="Password" required>
+        </div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid" (click)="onSubmit()">Login</button>
+        <button mat-raised-button color="primary" routerLink="/signup" routerLinkActive="active">Don't have an account Sign up</button>
+    </form>
+</div>

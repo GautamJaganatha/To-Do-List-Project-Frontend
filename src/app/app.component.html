@@ -1,0 +1,13 @@
+<div class="container">
+  <mat-toolbar color="primary" class="navbar">
+    <span class="navbar-brand">New Project</span>
+    <div class="buttons">
+      <button mat-button routerLink="signup" routerLinkActive="active">Signup</button>
+      <button mat-button routerLink="login" routerLinkActive="active">Login</button>
+      <button mat-button routerLink="logout" routerLinkActive="active">Logout</button>
+      <button mat-button routerLink="ToDo" routerLinkActive="active">ToDo</button>
+    </div>
+  </mat-toolbar>
+  <h2>{{title}}</h2>
+</div>
+<router-outlet></router-outlet>

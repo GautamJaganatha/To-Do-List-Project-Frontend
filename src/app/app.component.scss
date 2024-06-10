@@ -1,0 +1,28 @@
+
+.navbar-brand {
+    position: absolute; // Absolute positioning to center it within the toolbar
+    left: 50%; // Move to the center of the toolbar
+    transform: translateX(-50%); // Adjust position to be truly centered
+    font-size: 2.5em;
+    font-weight: bolder;
+}
+
+
+
+.buttons {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+
+}
+
+
+
+button {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    padding: 10px 20px; // Add padding to buttons
+    border-radius: 4px;
+    cursor: pointer;
+}

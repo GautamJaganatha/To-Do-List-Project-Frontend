@@ -1,0 +1,22 @@
+<div class="container">
+    <mat-card>
+        <mat-card-title class="title">Add Categories</mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="categoryForm" (ngSubmit)="onSubmit">
+                <mat-form-field appearance="outline">
+                    <input matInput type="text" formControlName="name" placeholder="Name" required >
+                    <mat-error *ngIf="categoryForm.get('name').invalid && categoryForm.get('name').touched">
+                        This input feild is required.
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <button class="button" color="primary" mat-raised-button   type="submit" [disabled]="categoryForm.invalid" (click)="onSubmit()">Add</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<br>
+<div class="todo-button">
+    <button mat-button routerLink="/ToDo" routerLinkActive="active">ToDo</button>
+</div>
