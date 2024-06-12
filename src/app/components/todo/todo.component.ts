@@ -10,9 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent {
-onSubmit() {
-throw new Error('Method not implemented.');
-}
+
 
   categories : any[] = [];
 
@@ -39,12 +37,9 @@ throw new Error('Method not implemented.');
     })
   }
 
-  toggleDropdown(category){
-    this.categoryName = category;
-    if(this.categories.includes(category)){
-      
-    }
-    this.showDropdown = !this.showDropdown;
+  toggleDropdown(categoryName: any){
+    
+    this.showDropdown = !this.showDropdown == categoryName ? null : categoryName;
   }
 
   getCategories(){
@@ -57,5 +52,10 @@ throw new Error('Method not implemented.');
     )
     console.log(this.categories);
   }
+
+
+  onSubmit() {
+    throw new Error('Method not implemented.');
+    }
 
 }

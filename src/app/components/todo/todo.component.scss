@@ -3,7 +3,28 @@
     align-items: center;
 }
 
-.card {
+.category-card {
     align-items: safe;
     padding: 20px;
+    margin-top: 15px;
+}
+
+.category-name {
+    display: felx;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.category {
+    justify-content: center;
+    align-items: center;
+}
+
+.to-do {
+    display: flex;
+    align-items: center;
+    padding: auto;
+    margin-top: 15px;
+    width: 100%;
 }

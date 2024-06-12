@@ -27,59 +27,23 @@
 </div> -->
 
 <div class="container">
-    <mat-card class="card" *ngFor="let category of categories">
-        <div>
-            <span (click)="toggleDropdown(category.name)">{{category.name}}</span>
+    <mat-card class="category-card" *ngFor="let category of categories">
+        <div class="category-name">
+            <span class="category" (click)="toggleDropdown(category.name)">{{category.name}}</span>
         </div>
-        {{categoryName}}
-        <div *ngIf="categoryName == 'Personal'">
+        <div class="to-do" *ngIf="showDropdown == category.name ">
             <form [formGroup]="addToTodo" (ngSubmit)="onSubmit()">
                 <mat-form-field appearance="outline">
-                    <mat-label>Title : </mat-label>
-                    <input matInput type="text" placeholder="Title" formControlName="title" required>
+                    <input matInput  formControlName="title" placeholder="Title" type="text" required> 
                 </mat-form-field>
                 <mat-form-field appearance="outline">
-                    <mat-label>Description </mat-label>
-                    <input matInput type="text" placeholder="Description" formControlName="description" required>
+                    <textarea matInput type="textarea" placeholder="Description" formControlName="description" required>Description</textarea>
                 </mat-form-field>
                 <mat-form-field appearance="outline">
-                    <mat-checkbox formControlName="completed" >Completed</mat-checkbox>
+                    <mat-checkbox formControlName="completed">Completed</mat-checkbox> 
                 </mat-form-field>
-                <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
-            </form>
-        </div>
 
-        <div *ngIf="categoryName == 'Eating'">
-            <form [formGroup]="addToTodo" (ngSubmit)="onSubmit()">
-                <mat-form-field appearance="outline">
-                    <mat-label>Title : </mat-label>
-                    <input matInput type="text" placeholder="Title" formControlName="title" required>
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Description </mat-label>
-                    <input matInput type="text" placeholder="Description" formControlName="description" required>
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-checkbox formControlName="completed" >Completed</mat-checkbox>
-                </mat-form-field>
-                <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
-            </form>
-        </div>
-
-        <div *ngIf="categoryName == 'Working'">
-            <form [formGroup]="addToTodo" (ngSubmit)="onSubmit()">
-                <mat-form-field appearance="outline">
-                    <mat-label>Title : </mat-label>
-                    <input matInput type="text" placeholder="Title" formControlName="title" required>
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Description </mat-label>
-                    <input matInput type="text" placeholder="Description" formControlName="description" required>
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-checkbox formControlName="completed" >Completed</mat-checkbox>
-                </mat-form-field>
-                <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+                <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="addToTodo.invalid">Save</button>
             </form>
         </div>
     </mat-card>
