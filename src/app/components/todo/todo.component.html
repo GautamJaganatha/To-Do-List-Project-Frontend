@@ -29,7 +29,7 @@
 <div class="container">
     <mat-card class="category-card" *ngFor="let category of categories">
         <div class="category-name">
-            <span class="category" (click)="toggleDropdown(category.name)">{{category.name}}</span>
+            <span class="category" (click)="toggleDropdown(category.name, category.id)">{{category.name}}</span>
         </div>
         <div class="to-do" *ngIf="showDropdown == category.name ">
             <form [formGroup]="addToTodo" (ngSubmit)="onSubmit()">
@@ -39,11 +39,9 @@
                 <mat-form-field appearance="outline">
                     <textarea matInput type="textarea" placeholder="Description" formControlName="description" required>Description</textarea>
                 </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-checkbox formControlName="completed">Completed</mat-checkbox> 
-                </mat-form-field>
+                <mat-checkbox formControlName="completed">Completed</mat-checkbox> 
 
-                <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="addToTodo.invalid">Save</button>
+                <button mat-raised-button color="primary" type="submit" [disabled]="addToTodo.invalid">Save</button>
             </form>
         </div>
     </mat-card>

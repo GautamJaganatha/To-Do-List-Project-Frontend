@@ -21,6 +21,7 @@ export class UserService {
   }
 
   public addCategory(addCateorgy: any) : Observable<any>{
+    console.log(this.createAuthorizationHeader)
     return this.http_.post(BASIC_URL+ "AddCategory", addCateorgy,{
       headers: this.createAuthorizationHeader(),
     });
@@ -37,4 +38,11 @@ export class UserService {
   //     'Authorization', 'Bearer ' + UserStorageService.getToken()
   //   )
   // }
+
+
+  public addTodo(Todo: any): Observable<any>{
+    return this.http_.post(BASIC_URL + `addToTodo`, Todo,{
+      headers: this.createAuthorizationHeader()
+    });
+  }
 }

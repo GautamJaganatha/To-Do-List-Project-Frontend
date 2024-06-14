@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from '../Services/user.service';
 import { Router } from '@angular/router';
+import { Conditional } from '@angular/compiler';
 
 @Component({
   selector: 'app-todo',
@@ -18,7 +19,8 @@ export class TodoComponent {
 
   showDropdown = false;
 
-  categoryName : any;
+  cName : any;
+  cId: any;
 
   constructor(
     private fb: FormBuilder,
@@ -33,13 +35,17 @@ export class TodoComponent {
     this.addToTodo = this.fb.group({
       title : [null,[Validators.required]],
       description : [null,[Validators.required]],
-      completed : [false]
+      completed : [false],
     })
   }
 
-  toggleDropdown(categoryName: any){
+  toggleDropdown(cName: any, cId:any){
     
-    this.showDropdown = !this.showDropdown == categoryName ? null : categoryName;
+    this.showDropdown = !this.showDropdown == cName ? null : cName ;
+    console.log(cName);
+    console.log(cId);
+    this.cName = cName;
+    this.cId = cId;
   }
 
   getCategories(){
@@ -55,7 +61,28 @@ export class TodoComponent {
 
 
   onSubmit() {
-    throw new Error('Method not implemented.');
-    }
+    const formData: FormData = new FormData();
+    const todoDto = {
+      title: this.addToTodo.get('title').value,
+      description: this.addToTodo.get('description').value,
+      completed: this.addToTodo.get('completed').value,
+      categoryId: this.cId,
+      categoryName: this.cName
+    };
+
+    this.service.addTodo(todoDto).subscribe(
+      (res) =>{
+        this.snackbar.open('addtoTodo is Successfull hey', 'Close',{
+          duration: 5000
+        })
+      },
+      (error) =>{
+        console.log(error);
+        this.snackbar.open('Something went wrong', 'Close',{
+          duration: 5000
+        })
+      }
+    );
+   }
 
 }
